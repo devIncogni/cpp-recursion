@@ -29,10 +29,29 @@ void printFrom(int N) {
   }
 }
 
+int sumUpto(int N) {
+  if (N == 0) {
+    return 0;
+  } else {
+    return N + sumUpto(N - 1);
+  }
+}
+
+int factorial(int N) {
+  if (N <= 1) {
+    return 1;
+  } else {
+    return N * factorial(N - 1);
+  }
+}
+
 int main() {
 
   printName("Arin", 5);
   printUpto(10);
   printFrom(10);
+  std::cout << sumUpto(10) << '\n';
+  std::cout << factorial(5) << '\n';
+
   return 0;
 }
