@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <string_view>
+#include <vector>
 void printName(std::string_view name, int times) {
   if (times <= 0) {
     return;
@@ -45,6 +46,17 @@ int factorial(int N) {
   }
 }
 
+void reverseArray(std::vector<int> &v, int start, int end) {
+  if (start >= end) {
+    return;
+  } else {
+    int temp = v[start];
+    v[start] = v[end];
+    v[end] = temp;
+    reverseArray(v, start + 1, end - 1);
+  }
+}
+
 int main() {
 
   printName("Arin", 5);
@@ -53,5 +65,10 @@ int main() {
   std::cout << sumUpto(10) << '\n';
   std::cout << factorial(5) << '\n';
 
+  std::vector<int> v = {1, 2, 3, 4, 5, 6, 7};
+  reverseArray(v, 0, v.size() - 1);
+  for (int i : v) {
+    std::cout << i;
+  }
   return 0;
 }
