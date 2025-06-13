@@ -57,6 +57,20 @@ void reverseArray(std::vector<int> &v, int start, int end) {
   }
 }
 
+std::vector<int> fibonacci(int NthTerm) {
+  std::vector<int> fiboSeq;
+  if (NthTerm == 0) {
+    return {0};
+  } else if (NthTerm == 1) {
+    return {0, 1};
+  } else {
+    fiboSeq = fibonacci(NthTerm - 1);
+    fiboSeq.push_back(fiboSeq[fiboSeq.size() - 1] +
+                      fiboSeq[fiboSeq.size() - 2]);
+    return fiboSeq;
+  }
+}
+
 int main() {
 
   printName("Arin", 5);
@@ -67,8 +81,16 @@ int main() {
 
   std::vector<int> v = {1, 2, 3, 4, 5, 6, 7};
   reverseArray(v, 0, v.size() - 1);
+  v.push_back(1);
   for (int i : v) {
     std::cout << i;
   }
+  std::cout << '\n';
+
+  v = fibonacci(10);
+  for (int i : v) {
+    std::cout << i << ' ';
+  }
+
   return 0;
 }
